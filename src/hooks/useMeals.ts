@@ -1,5 +1,5 @@
-import { useInfiniteQuery } from 'react-query';
-import { fetchMeals } from 'src/api/meal';
+import { useInfiniteQuery, useQuery } from 'react-query';
+import { fetchLatestMeal, fetchMeals } from 'src/api/meal';
 
 export const useMeals = (type?: string) => {
   return useInfiniteQuery(['meals', { type }], ({ pageParam = 1 }) => fetchMeals({ pageParam, type }), {
@@ -9,6 +9,11 @@ export const useMeals = (type?: string) => {
       } else {
         return undefined;
       }
-    }
+    },
+    keepPreviousData: true
   });
+};
+
+export const useLatestMeal = () => {
+  return useQuery('latestMeal', fetchLatestMeal);
 };

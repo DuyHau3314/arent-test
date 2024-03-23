@@ -35,4 +35,34 @@ export default function mealRoutes(server: any) {
       latestDatePercentage: percentage
     };
   });
+
+  server.get('/api/meals/latest', (schema: any) => {
+    const allMeals = schema.db.meals.map((meal) => ({
+      ...meal,
+      date: meal.date.split('T')[0]
+    }));
+
+    // Sort meals by date in descending order
+    allMeals.sort((a, b) => b.date.localeCompare(a.date));
+
+    const latestDate = allMeals[0]?.date; // Get the latest date from sorted meals
+    const mealsForLatestDate = allMeals.filter((meal) => meal.date === latestDate);
+
+    // Define all required meal types
+    const requiredMealTypes = new Set(['morning', 'lunch', 'dinner', 'snack']);
+    const mealTypesForLatestDate = new Set(mealsForLatestDate.map((meal) => meal.type));
+
+    let matchedTypes = 0;
+    requiredMealTypes.forEach((type) => {
+      if (mealTypesForLatestDate.has(type)) {
+        matchedTypes += 1;
+      }
+    });
+    const percentage = (matchedTypes / requiredMealTypes.size) * 100;
+
+    return {
+      latestDate: latestDate,
+      latestDatePercentage: percentage
+    };
+  });
 }

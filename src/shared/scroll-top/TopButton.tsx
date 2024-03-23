@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+
+import IconButton from '../icon/IconButton';
 
 // Styled component for the button
 const TopButton = styled.button`
   position: fixed;
-  bottom: 20px;
+  bottom: 110px;
   right: 20px;
-  background: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
@@ -48,9 +49,11 @@ const ScrollToTopButton = () => {
   }, []);
 
   return (
-    <TopButton onClick={scrollToTop} className={isVisible ? 'show' : ''}>
-      Go to Top
-    </TopButton>
+    <>
+      <TopButton onClick={scrollToTop} className={isVisible ? 'show' : ''}>
+        <IconButton name="scrollTop" />
+      </TopButton>
+    </>
   );
 };
 

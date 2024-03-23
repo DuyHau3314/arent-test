@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import 'chart.js/auto';
+
 import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
-import 'chart.js/auto';
 import styled from 'styled-components';
 
 const data = {
@@ -72,10 +74,10 @@ const options: any = {
 const ChartContainer = styled.div`
   background: rgb(33, 37, 41);
   padding: 20px;
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 `;
 
 const Button = styled.button`
@@ -106,75 +108,75 @@ const ButtonContainer = styled.div`
 //   );
 // };
 
-// const LineChart = () => {
-//   return (
-//     <ChartContainer>
-//       <ButtonContainer>
-//         {/* Add as many buttons as you need */}
-//         <Button>Button Above</Button>
-//       </ButtonContainer>
-//       <div style={{ height: '100%', width: '100%' }}>
-//         <Line data={data} options={options} />
-//       </div>
-//       <ButtonContainer>
-//         {/* Add as many buttons as you need */}
-//         <Button>Button Below 1</Button>
-//         <Button>Button Below 2</Button>
-//         <Button>Button Below 3</Button>
-//       </ButtonContainer>
-//     </ChartContainer>
-//   );
-// };
-
 const LineChart = () => {
-  const [chartData, setChartData] = useState(data);
-
-  // Toggle visibility of dataset 1
-  const toggleDataset1 = () => {
-    const newChartData = {
-      ...chartData,
-      datasets: chartData.datasets.map((dataset, index) => (index === 0 ? { ...dataset, hidden: !dataset.hidden } : dataset))
-    };
-    setChartData(newChartData);
-  };
-
-  // Toggle visibility of dataset 2
-  const toggleDataset2 = () => {
-    const newChartData = {
-      ...chartData,
-      datasets: chartData.datasets.map((dataset, index) => (index === 1 ? { ...dataset, hidden: !dataset.hidden } : dataset))
-    };
-    setChartData(newChartData);
-  };
-
-  // Change label (e.g., for changing the time frame)
-  const changeLabel = (newLabel) => {
-    const newChartData = {
-      ...chartData,
-      labels: chartData.labels.map(
-        (label, index) => (index === 5 ? newLabel : label) // This example just changes one label for demonstration
-      )
-    };
-    setChartData(newChartData);
-  };
-
   return (
     <ChartContainer>
       <ButtonContainer>
-        <Button onClick={toggleDataset1}>Toggle Dataset 1</Button>
-        <Button onClick={toggleDataset2}>Toggle Dataset 2</Button>
+        {/* Add as many buttons as you need */}
+        {/* <Button>Button Above</Button> */}
       </ButtonContainer>
       <div style={{ height: '100%', width: '100%' }}>
-        <Line data={chartData} options={options} />
+        <Line data={data} options={options} />
       </div>
       <ButtonContainer>
-        {/* This could be dynamically generated based on your data */}
-        <Button onClick={() => changeLabel('New Label 1')}>Label 1</Button>
-        <Button onClick={() => changeLabel('New Label 2')}>Label 2</Button>
-        <Button onClick={() => changeLabel('New Label 3')}>Label 3</Button>
+        {/* Add as many buttons as you need */}
+        {/* <Button>Button Below 1</Button>
+        <Button>Button Below 2</Button>
+        <Button>Button Below 3</Button> */}
       </ButtonContainer>
     </ChartContainer>
   );
 };
+
+// const LineChart = () => {
+//   const [chartData, setChartData] = useState(data);
+
+//   // Toggle visibility of dataset 1
+//   const toggleDataset1 = () => {
+//     const newChartData = {
+//       ...chartData,
+//       datasets: chartData.datasets.map((dataset, index) => (index === 0 ? { ...dataset, hidden: !dataset.hidden } : dataset))
+//     };
+//     setChartData(newChartData);
+//   };
+
+//   // Toggle visibility of dataset 2
+//   const toggleDataset2 = () => {
+//     const newChartData = {
+//       ...chartData,
+//       datasets: chartData.datasets.map((dataset, index) => (index === 1 ? { ...dataset, hidden: !dataset.hidden } : dataset))
+//     };
+//     setChartData(newChartData);
+//   };
+
+//   // Change label (e.g., for changing the time frame)
+//   const changeLabel = (newLabel) => {
+//     const newChartData = {
+//       ...chartData,
+//       labels: chartData.labels.map(
+//         (label, index) => (index === 5 ? newLabel : label) // This example just changes one label for demonstration
+//       )
+//     };
+//     setChartData(newChartData);
+//   };
+
+//   return (
+//     <ChartContainer>
+//       <ButtonContainer>
+//         <Button onClick={toggleDataset1}>Toggle Dataset 1</Button>
+//         <Button onClick={toggleDataset2}>Toggle Dataset 2</Button>
+//       </ButtonContainer>
+//       <div style={{ height: '100%', width: '100%' }}>
+//         <Line data={chartData} options={options} />
+//       </div>
+//       <ButtonContainer>
+//         {/* This could be dynamically generated based on your data */}
+//         <Button onClick={() => changeLabel('New Label 1')}>Label 1</Button>
+//         <Button onClick={() => changeLabel('New Label 2')}>Label 2</Button>
+//         <Button onClick={() => changeLabel('New Label 3')}>Label 3</Button>
+//       </ButtonContainer>
+//     </ChartContainer>
+//   );
+// };
 
 export default LineChart;

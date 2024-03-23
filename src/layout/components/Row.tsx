@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { device } from 'src/theme';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type RowProps = {
   marginTop?: string;
@@ -16,12 +16,16 @@ type RowProps = {
   width?: string;
   centerX?: boolean;
   centerY?: boolean;
+  gap?: string;
+  end?: boolean;
+  columns?: number;
   children: React.ReactNode;
 };
 
 const StyledRow = styled.div<RowProps>`
   display: flex;
-  justify-content: ${({ centerX }) => (centerX ? 'center' : 'flex-start')};
+  flex-wrap: wrap;
+  justify-content: ${({ centerX, end }) => (centerX ? 'center' : end ? 'flex-end' : 'flex-start')};
   align-items: ${({ centerY }) => (centerY ? 'center' : 'stretch')};
   margin-top: ${({ marginY, marginTop }) => marginTop || marginY || '0'};
   margin-bottom: ${({ marginY, marginBottom }) => marginBottom || marginY || '0'};
@@ -32,6 +36,19 @@ const StyledRow = styled.div<RowProps>`
   padding-left: ${({ paddingLeft }) => paddingLeft || '0'};
   padding-right: ${({ paddingRight }) => paddingRight || '0'};
   width: ${({ width }) => width || 'auto'};
+  gap: ${({ gap }) => gap || 0};
+
+  ${({ columns }) =>
+    columns &&
+    css`
+      & > * {
+        flex: 1;
+        min-width: calc(100% / ${columns} - 10px);
+        @media ${device.small} {
+          min-width: 100%;
+        }
+      }
+    `}
 
   @media ${device.small} {
     margin-top: ${({ marginY }) => marginY || '0'};
@@ -41,6 +58,7 @@ const StyledRow = styled.div<RowProps>`
     padding-left: 0;
     padding-right: 0;
     width: 100%;
+    gap: 5px;
   }
 `;
 

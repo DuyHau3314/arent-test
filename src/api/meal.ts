@@ -13,3 +13,8 @@ export const fetchMeals = async ({ pageParam = 1, type = null }: FetchMealsParam
   const { data } = await axiosInstance.get(url);
   return data;
 };
+
+export const fetchLatestMeal = async () => {
+  const { data } = await axiosInstance.get('/meals/latest');
+  return data;
+};

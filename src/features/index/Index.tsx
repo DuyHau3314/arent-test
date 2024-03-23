@@ -4,31 +4,26 @@ import SplitScreen from 'src/layout/components/SplitScreen';
 
 import CircularPageLoader from '../../shared/page-loader/CircularPageLoader';
 import BodyWeight from '../body-weight/components/BodyWeight';
-import DateAndAchievementRate from '../date-achievement-rate/components/DateAndAchievementRate';
-import MealHistory from '../meal-history/components/MealHistory';
-import TransitInput from '../transit-input/components/TransitInput';
 
 const Header: LazyExoticComponent<FC> = lazy(() => import('../../shared/header/components/Header'));
 const Footer: LazyExoticComponent<FC> = lazy(() => import('../../shared/footer/components/Footer'));
+const DateAndAchievementRate: LazyExoticComponent<FC> = lazy(() => import('../date-achievement-rate/components/DateAndAchievementRate'));
+const Meal: LazyExoticComponent<FC> = lazy(() => import('../meal/Meal'));
 
 const Index: FC = (): ReactElement => {
   return (
     <div>
       <Suspense fallback={<CircularPageLoader />}>
         <Header />
-        <SplitScreen leftWidth={1.5} rightWidth={3}>
+        <SplitScreen leftWidth={1.5} rightWidth={2} height="400px">
           <DateAndAchievementRate />
           <BodyWeight />
         </SplitScreen>
 
-        <Row marginX="10%">
-          <TransitInput />
+        <Meal />
+        <Row marginTop={'2rem'}>
+          <Footer />
         </Row>
-
-        <Row>
-          <MealHistory />
-        </Row>
-        <Footer />
       </Suspense>
     </div>
   );
