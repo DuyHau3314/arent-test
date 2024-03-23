@@ -72,12 +72,13 @@ const options: any = {
 };
 
 const ChartContainer = styled.div`
-  background: rgb(33, 37, 41);
+  background: ${({ theme }) => theme.colors.dark700};
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
+  width: 100%;
 `;
 
 const Button = styled.button`

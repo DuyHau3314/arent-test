@@ -6,6 +6,7 @@ interface MenuItem {
   height: string;
   label: string;
   badge?: string;
+  to: string;
 }
 
 const menu: MenuItem[] = [
@@ -13,20 +14,23 @@ const menu: MenuItem[] = [
     name: 'note',
     size: 'small',
     height: '100%',
-    label: '自分の記録'
+    label: '自分の記録',
+    to: '/my-record'
   },
   {
     name: 'challenge',
     size: 'small',
     height: '100%',
-    label: 'チャレンジ'
+    label: 'チャレンジ',
+    to: '/challenge'
   },
   {
     name: 'info',
     size: 'small',
     height: '100%',
     label: 'お知らせ',
-    badge: '1'
+    badge: '1',
+    to: '/notification'
   }
 ];
 

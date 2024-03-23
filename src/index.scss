@@ -31,16 +31,16 @@ body {
   overflow: auto;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
-  display: none;
-}
-::-webkit-scrollbar-track {
-  background: white;
-}
-::-webkit-scrollbar-thumb {
-  background-color: rgb(173, 173, 173);
-}
+// ::-webkit-scrollbar {
+//   width: 5px;
+//   display: none;
+// }
+// ::-webkit-scrollbar-track {
+//   background: white;
+// }
+// ::-webkit-scrollbar-thumb {
+//   background-color: rgb(173, 173, 173);
+// }
 
 th {
   border-bottom: 1px solid #e8e8e8;

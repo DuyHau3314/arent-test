@@ -36,7 +36,7 @@ const StyleFooter = styled(Row)`
 
   width: 100%;
 
-  padding: 15px 10%;
+  padding: 55px 10%;
 
   @media ${device.small} {
     padding: 15px 5%;

@@ -1,4 +1,5 @@
 import { FC, ReactElement } from 'react';
+import { Link } from 'react-router-dom';
 import Row from 'src/layout/components/Row';
 import SplitScreen from 'src/layout/components/SplitScreen';
 import IconButton from 'src/shared/icon/IconButton';
@@ -11,7 +12,6 @@ const StyleHeader = styled.header`
   background-color: ${(props) => props.theme.colors.dark700};
   border: none;
   color: ${(props) => props.theme.colors.light};
-  /* padding: 15px 32px; */
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -38,11 +38,15 @@ const Header: FC = (): ReactElement => {
     <StyleHeader>
       <SplitScreen leftWidth={2} rightWidth={3} centerY>
         <Row centerY>
-          <IconButton name="logo" size="xxxlarge" height="100%" />
+          <Link to="/">
+            <IconButton name="logo" size="xxxlarge" height="100%" />
+          </Link>
         </Row>
         <Row centerY end gap="8%">
           {menu.map((item) => (
-            <IconButton key={item.name} name={item.name} size={item.size} height={item.height} label={item.label} badge={item.badge} />
+            <Link to={item.to}>
+              <IconButton key={item.name} name={item.name} size={item.size} height={item.height} label={item.label} badge={item.badge} />
+            </Link>
           ))}
         </Row>
       </SplitScreen>

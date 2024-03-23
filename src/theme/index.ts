@@ -10,7 +10,9 @@ export const theme = {
     dark700: '#414141',
     dark600: '#424242',
     dark500: '#616161',
+    gray300: '#777777',
     gray400: '#BDBDBD',
+    gray500: '#707070',
     primaryGradient: 'linear-gradient(45deg, #FFB74D 0%, #FFA726 100%)'
   },
   fonts: {

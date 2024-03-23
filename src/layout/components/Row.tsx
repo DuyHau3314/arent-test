@@ -19,13 +19,16 @@ type RowProps = {
   gap?: string;
   end?: boolean;
   columns?: number;
+  spaceBetween?: boolean;
+  height?: string;
   children: React.ReactNode;
 };
 
 const StyledRow = styled.div<RowProps>`
   display: flex;
   flex-wrap: wrap;
-  justify-content: ${({ centerX, end }) => (centerX ? 'center' : end ? 'flex-end' : 'flex-start')};
+  justify-content: ${({ centerX, end, spaceBetween }) =>
+    centerX ? 'center' : end ? 'flex-end' : spaceBetween ? 'space-between' : 'flex-start'};
   align-items: ${({ centerY }) => (centerY ? 'center' : 'stretch')};
   margin-top: ${({ marginY, marginTop }) => marginTop || marginY || '0'};
   margin-bottom: ${({ marginY, marginBottom }) => marginBottom || marginY || '0'};
@@ -36,6 +39,7 @@ const StyledRow = styled.div<RowProps>`
   padding-left: ${({ paddingLeft }) => paddingLeft || '0'};
   padding-right: ${({ paddingRight }) => paddingRight || '0'};
   width: ${({ width }) => width || 'auto'};
+  height: ${({ height }) => height || 'auto'};
   gap: ${({ gap }) => gap || 0};
 
   ${({ columns }) =>

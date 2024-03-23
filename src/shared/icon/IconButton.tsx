@@ -66,7 +66,7 @@ const StyledButton = styled.button<{ size: IconSize; width?: string; height?: st
         position: absolute;
         top: -10%;
         right: -20%;
-        background-color: ${({ theme }) => theme.colors.primary500};
+        background-color: ${({ theme }) => theme.colors.primary600};
         border-radius: 50%;
         color: white;
         padding: 0.5em 0.5em;
